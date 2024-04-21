@@ -220,7 +220,6 @@ async def set_interval(update: Update, context: CallbackContext) -> None:
         Args:
             update (Update): Объект, содержащий информацию о входящем сообщении.
             context (CallbackContext): Контекст обработки команды.
-
     """
     user_id = update.message.chat_id
     user = session.query(User).filter_by(chat_id=user_id).first()
