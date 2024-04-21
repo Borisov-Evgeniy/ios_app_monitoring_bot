@@ -256,8 +256,6 @@ async def generate_key(update: Update, context: CallbackContext) -> None:
             context (CallbackContext): Контекст обработки команды.
 
     """
-    print("Received /generate_key command")  # Добавляем принт для отслеживания вызова команды
-
     user_id = update.effective_chat.id
 
     user = session.query(User).filter_by(chat_id=user_id).first()
@@ -269,8 +267,6 @@ async def generate_key(update: Update, context: CallbackContext) -> None:
             return
 
         access_key = context.args[0]
-
-        print(f"Received access key: {access_key}")  # Добавляем принт для отслеживания полученного ключа доступа
 
         # Генерируем случайный ключ доступа и сохраняем его в базу данных
         new_key = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
